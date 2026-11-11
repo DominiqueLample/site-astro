@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ciel profond en SHO — astrophotographie &amp; astrophysique</title>
+<meta name="description" content="Galerie d'astrophotos en palette SHO avec commentaires astrophysiques : ce que révèle le SHO, comment naissent les photons, comment ils sont filtrés et comment ils voyagent dans l'espace.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a class="brand" href="#accueil">✦ SHO<span>·astro</span></a>
+  <nav class="nav-links">
+    <a href="#galerie">Galerie</a>
+    <a href="#sho">La palette SHO</a>
+    <a href="#photons">Les photons</a>
+    <a href="#filtrage">Le filtrage</a>
+    <a href="#voyage">Le voyage</a>
+  </nav>
+</header>
+
+<section class="hero" id="accueil">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="kicker">Astrophotographie &amp; astrophysique</p>
+    <h1>Le ciel profond<br>en <span class="grad-sho">S&nbsp;H&nbsp;O</span></h1>
+    <p class="lead">Des images de nébuleuses décortiquées : ce que révèle la palette SHO,
+    d'où viennent les photons, comment on les filtre — et le long voyage qu'ils accomplissent
+    avant d'atteindre notre capteur.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#galerie">Voir la galerie</a>
+      <a class="btn ghost" href="#sho">Comprendre le SHO</a>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#galerie" aria-label="Défiler">⌄</a>
+</section>
+
+<main>
+
+<!-- ================= GALERIE ================= -->
+<section id="galerie" class="section">
+  <div class="wrap">
+    <p class="kicker">Galerie</p>
+    <h2>Photos &amp; commentaires astrophysiques</h2>
+    <p class="intro">Chaque image est une <strong>composition SHO</strong> : trois filtres à bande étroite
+    (Soufre II, Hydrogène alpha, Oxygène III) recombinés en rouge, vert et bleu. Cliquez sur une photo
+    pour l'agrandir et lire son commentaire.</p>
+    <p class="note">✎ Les visuels de cette démo sont générés procéduralement dans l'esprit des images SHO.
+    Pour utiliser vos propres photos, déposez vos fichiers dans <code>assets/</code> et modifiez le tableau
+    <code>PHOTOS</code> dans <code>js/main.js</code>.</p>
+    <div id="gallery" class="gallery"><!-- rendu par js/main.js --></div>
+  </div>
+</section>
+
+<!-- ================= SHO ================= -->
+<section id="sho" class="section alt">
+  <div class="wrap">
+    <p class="kicker">Comprendre</p>
+    <h2>La palette SHO : un code couleur scientifique</h2>
+    <p class="intro">SHO signifie <strong>S</strong>oufre II – <strong>H</strong>ydrogène alpha – <strong>O</strong>xygène III,
+    trois raies d'émission des nébuleuses. On photographie chaque raie séparément avec un filtre à bande étroite,
+    puis on recombine : <span class="c-sii">SII → rouge</span>, <span class="c-ha">Hα → vert</span>,
+    <span class="c-oiii">OIII → bleu</span>. Ce ne sont pas les « vraies » couleurs de l'œil humain :
+    c'est une <em>traduction</em> qui sépare les gaz et leurs conditions physiques.</p>
+
+    <div class="cards3">
+      <article class="card canal sii reveal">
+        <h3><span class="dot"></span>S II — Soufre ionisé</h3>
+        <p class="lambda">671,6 &amp; 673,1 nm · 1,84 eV · rouge profond</p>
+        <p>Trace les <strong>zones de choc</strong> et les lisières de basse ionisation, là où le gaz
+        heurte un front d'ionisation ou une coquille de vent stellaire. En SHO, il dessine souvent
+        les bords extérieurs et les filaments.</p>
+      </article>
+      <article class="card canal ha reveal">
+        <h3><span class="dot"></span>H α — Hydrogène ionisé</h3>
+        <p class="lambda">656,3 nm · 1,89 eV · rouge</p>
+        <p>Le traceur principal des <strong>régions H II</strong> : de grands nuages d'hydrogène ionisé
+        par le rayonnement ultraviolet des étoiles jeunes et chaudes. C'est lui qui donne la masse
+        lumineuse des nébuleuses à émission.</p>
+      </article>
+      <article class="card canal oiii reveal">
+        <h3><span class="dot"></span>[O III] — Oxygène doublement ionisé</h3>
+        <p class="lambda">495,9 &amp; 500,7 nm · 2,48 eV · bleu-vert</p>
+        <p>Révèle le gaz <strong>très excité</strong> (≈ 10 000 K) baigné dans un rayonnement UV dur :
+        le cœur des nébuleuses autour des étoiles les plus chaudes, là où l'oxygène a perdu deux électrons.</p>
+      </article>
+    </div>
+
+    <h3 class="sub">Les raies du spectre visible</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th>Ion / atome</th><th>Raie</th><th>Longueur d'onde</th><th>Couleur</th><th>Énergie du photon</th><th>Ce qu'elle révèle</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>H (série de Balmer)</td><td>Hα, transition 3 → 2</td><td>656,28 nm</td><td class="c-ha">rouge</td><td>1,89 eV</td><td>Hydrogène ionisé, régions H II</td></tr>
+          <tr><td>[S II]</td><td>doublet interdit</td><td>671,64 / 673,08 nm</td><td class="c-sii">rouge profond</td><td>1,84 eV</td><td>Chocs, lisières de basse ionisation</td></tr>
+          <tr><td>[O III]</td><td>doublet interdit</td><td>495,9 / 500,7 nm</td><td class="c-oiii">bleu-vert</td><td>2,48 eV</td><td>Gaz très chaud et peu dense, UV intense</td></tr>
+          <tr><td>H (série de Balmer)</td><td>Hβ, transition 4 → 2</td><td>486,13 nm</td><td>bleu-vert</td><td>2,55 eV</td><td>Même gaz que Hα, mais plus excité</td></tr>
+          <tr><td>[N II]</td><td>raie interdite</td><td>658,4 nm</td><td>rouge</td><td>1,88 eV</td><td>Azote ionisé, souvent près de Hα</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Le spectre et les filtres SHO <span class="hint">(cliquez sur les légendes pour isoler chaque canal)</span></h3>
+    <div class="spectrum reveal">
+      <svg id="spectrum" viewBox="0 0 1000 240" role="img" aria-label="Spectre visible de 400 à 700 nm avec les raies Hβ, OIII, NII, Hα et SII et les bandes passantes des filtres SHO">
+        <defs>
+          <linearGradient id="rainbow" x1="60" y1="0" x2="960" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#8f00ff"/><stop offset="0.17" stop-color="#0033ff"/>
+            <stop offset="0.33" stop-color="#00cfff"/><stop offset="0.5" stop-color="#00ff88"/>
+            <stop offset="0.58" stop-color="#aaff00"/><stop offset="0.67" stop-color="#ffff00"/>
+            <stop offset="0.75" stop-color="#ff9500"/><stop offset="0.85" stop-color="#ff2200"/>
+            <stop offset="1" stop-color="#a00000"/>
+          </linearGradient>
+          <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity=".15"/>
+          </linearGradient>
+        </defs>
+        <rect x="60" y="96" width="900" height="34" fill="url(#rainbow)" opacity="0.55" rx="4"/>
+        <g font-size="12" fill="#9aa3c7" font-family="inherit">
+          <text x="60" y="150">400 nm</text><text x="285" y="150">500</text>
+          <text x="510" y="150">600</text><text x="935" y="150">700 nm</text>
+        </g>
+        <!-- bandes passantes des filtres -->
+        <g class="band" data-key="oiii"><rect x="354.6" y="80" width="15" height="66" rx="3" fill="#54c8ff" opacity=".28"/><text x="362" y="70" text-anchor="middle" font-size="11" fill="#54c8ff">OIII 5 nm</text></g>
+        <g class="band" data-key="ha"><rect x="820.9" y="80" width="18" height="66" rx="3" fill="#6dff9e" opacity=".28"/><text x="830" y="70" text-anchor="middle" font-size="11" fill="#6dff9e">Hα 6 nm</text></g>
+        <g class="band" data-key="sii"><rect x="866.5" y="80" width="21" height="66" rx="3" fill="#ff5a4e" opacity=".28"/><text x="877" y="70" text-anchor="middle" font-size="11" fill="#ff5a4e">SII 7 nm</text></g>
+        <!-- raies -->
+        <g class="line" data-key="hbeta"><line x1="318.3" y1="86" x2="318.3" y2="140" stroke="#4dd0e1" stroke-width="6" opacity=".25"/><line x1="318.3" y1="86" x2="318.3" y2="140" stroke="#4dd0e1" stroke-width="2"/><text x="318" y="170" text-anchor="middle" font-size="12" fill="#4dd0e1">Hβ 486,1</text></g>
+        <g class="line" data-key="oiii"><line x1="347.7" y1="86" x2="347.7" y2="140" stroke="#54c8ff" stroke-width="6" opacity=".25"/><line x1="347.7" y1="86" x2="347.7" y2="140" stroke="#54c8ff" stroke-width="2"/><line x1="362.1" y1="86" x2="362.1" y2="140" stroke="#54c8ff" stroke-width="6" opacity=".25"/><line x1="362.1" y1="86" x2="362.1" y2="140" stroke="#9fe4ff" stroke-width="2"/><text x="355" y="186" text-anchor="middle" font-size="12" fill="#54c8ff">[O III] 495,9 / 500,7</text></g>
+        <g class="line" data-key="nii"><line x1="824.4" y1="86" x2="824.4" y2="140" stroke="#ff8fa3" stroke-width="5" opacity=".25"/><line x1="824.4" y1="86" x2="824.4" y2="140" stroke="#ff8fa3" stroke-width="1.6"/><line x1="835.2" y1="86" x2="835.2" y2="140" stroke="#ff8fa3" stroke-width="5" opacity=".25"/><line x1="835.2" y1="86" x2="835.2" y2="140" stroke="#ff8fa3" stroke-width="1.6"/><text x="830" y="202" text-anchor="middle" font-size="12" fill="#ff8fa3">[N II] 654,8 / 658,4</text></g>
+        <g class="line" data-key="ha"><line x1="828.9" y1="80" x2="828.9" y2="146" stroke="#6dff9e" stroke-width="8" opacity=".3"/><line x1="828.9" y1="80" x2="828.9" y2="146" stroke="#a9ffc6" stroke-width="2.4"/><text x="700" y="60" font-size="12" fill="#6dff9e">Hα 656,3 nm</text></g>
+        <g class="line" data-key="sii"><line x1="874.8" y1="86" x2="874.8" y2="140" stroke="#ff5a4e" stroke-width="6" opacity=".25"/><line x1="874.8" y1="86" x2="874.8" y2="140" stroke="#ff5a4e" stroke-width="2"/><line x1="879.3" y1="86" x2="879.3" y2="140" stroke="#ff5a4e" stroke-width="6" opacity=".25"/><line x1="879.3" y1="86" x2="879.3" y2="140" stroke="#ff8a7a" stroke-width="2"/><text x="877" y="218" text-anchor="middle" font-size="12" fill="#ff5a4e">[S II] 671,6 / 673,1</text></g>
+      </svg>
+      <div class="chips">
+        <button class="chip" data-key="ha" style="--c:#6dff9e">Hα · hydrogène</button>
+        <button class="chip" data-key="oiii" style="--c:#54c8ff">[O III] · oxygène</button>
+        <button class="chip" data-key="sii" style="--c:#ff5a4e">[S II] · soufre</button>
+        <button class="chip" data-key="hbeta" style="--c:#4dd0e1">Hβ · hydrogène</button>
+        <button class="chip" data-key="nii" style="--c:#ff8fa3">[N II] · azote</button>
+      </div>
+    </div>
+
+    <div class="cards3">
+      <article class="card reveal">
+        <h3>Pourquoi de fausses couleurs ?</h3>
+        <p>De nuit, l'œil humain peine à voir la couleur des nébuleuses : Hα paraît à peine rougeâtre.
+        En codant chaque gaz dans un canal, on obtient des images à la fois <strong>belles et lisibles</strong> :
+        le bleu marque le gaz le plus chaud, le rouge les zones choquées.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Ce que le SHO révèle</h3>
+        <p>Des structures <strong>invisibles en lumière « naturelle »</strong> : frontières d'ionisation,
+        coquilles de vent stellaire, cavités soufflées par les amas d'étoiles, densité et température du gaz
+        lisibles directement dans les teintes.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Un peu de profondeur</h3>
+        <p>Trois canaux = trois « plans » de la nébuleuse. Quand le rouge domine au bord et le bleu au cœur,
+        on lit directement la <strong>géométrie 3D</strong> du nuage : enveloppe externe contre noyau excité.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTONS ================= -->
+<section id="photons" class="section">
+  <div class="wrap">
+    <p class="kicker">La physique</p>
+    <h2>Comment les photons sont faits</h2>
+    <p class="intro">Un photon est le <strong>quantum de lumière</strong> : un paquet d'énergie électromagnétique
+    émis ou absorbé en une seule fois par la matière. Son énergie ne dépend que de sa fréquence (ou de sa
+    longueur d'onde) :</p>
+
+    <div class="formula reveal">
+      <span class="eq">E = h·ν = h·c / λ</span>
+      <span class="legend">h = 6,626 × 10⁻³⁴ J·s (constante de Planck) · c = 299 792 458 m/s · λ en mètres</span>
+      <span class="legend">Exemple : la raie Hα à 656,3 nm transporte E ≈ 3,03 × 10⁻¹⁹ J ≈ 1,89 eV par photon.</span>
+    </div>
+
+    <div class="split">
+      <div class="reveal">
+        <h3 class="sub">Dans une nébuleuse : ionisation, puis recombinaison</h3>
+        <ol class="steps">
+          <li><strong>Une étoile chaude émet de l'UV.</strong> Un photon UV de longueur d'onde inférieure à
+          91,2 nm (énergie supérieure à 13,6 eV) arrache l'électron de l'hydrogène (ionisation) : H → H⁺ + e⁻.</li>
+          <li><strong>Proton et électron se retrouvent.</strong> L'électron est capturé par le proton :
+          l'atome d'hydrogène se reforme dans un état <em>excité</em> (électron sur une orbite haute).</li>
+          <li><strong>L'électron redescend en cascade.</strong> À chaque saut vers une orbite plus basse,
+          l'atome émet un photon d'énergie exactement égale à la différence des niveaux.
+          Le saut 3 → 2 produit la raie <strong>Hα à 656,3 nm</strong> — rouge.</li>
+          <li><strong>Le photon s'échappe dans une direction aléatoire</strong> (émission spontanée) et
+          commence son voyage.</li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <h3 class="sub">Niveaux d'énergie de l'hydrogène</h3>
+        <svg viewBox="0 0 560 260" class="grotrian" role="img" aria-label="Diagramme des niveaux d'énergie de l'atome d'hydrogène avec les transitions Hα, Hβ et Lyman-alpha">
+          <g stroke="#3a4270" stroke-width="2">
+            <line x1="80" y1="220" x2="500" y2="220"/><text x="510" y="224" class="lbl">n = 1</text>
+            <line x1="80" y1="172" x2="500" y2="172"/><text x="510" y="176" class="lbl">n = 2</text>
+            <line x1="80" y1="134" x2="500" y2="134"/><text x="510" y="138" class="lbl">n = 3</text>
+            <line x1="80" y1="104" x2="500" y2="104"/><text x="510" y="108" class="lbl">n = 4</text>
+            <line x1="80" y1="80" x2="500" y2="80"/><text x="510" y="84" class="lbl">n = 5</text>
+          </g>
+          <line x1="80" y1="42" x2="500" y2="42" stroke="#3a4270" stroke-width="2" stroke-dasharray="6 5"/>
+          <text x="510" y="46" class="lbl">ionisé</text>
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+          </defs>
+          <g stroke-width="2.4" fill="none">
+            <line x1="150" y1="218" x2="150" y2="46" stroke="#b18cff" marker-end="url(#arr)"/>
+            <text x="158" y="130" class="lbl" fill="#b18cff">UV &lt; 91,2 nm : ionisation</text>
+            <line x1="250" y1="132" x2="250" y2="170" stroke="#ff5a6e" marker-end="url(#arr)"/>
+            <text x="258" y="156" class="lbl" fill="#ff5a6e">Hα · 656,3 nm · rouge</text>
+            <line x1="340" y1="102" x2="340" y2="170" stroke="#54c8ff" marker-end="url(#arr)"/>
+            <text x="348" y="140" class="lbl" fill="#54c8ff">Hβ · 486,1 nm</text>
+            <line x1="430" y1="170" x2="430" y2="218" stroke="#b18cff" marker-end="url(#arr)"/>
+            <text x="438" y="200" class="lbl" fill="#b18cff">Lyman-α · 121,6 nm · UV</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <h3 class="sub">Les autres « fabriques » de photons</h3>
+    <div class="cards3">
+      <article class="card reveal">
+        <h3>Les étoiles : rayonnement thermique</h3>
+        <p>Un gaz chaud et opaque émet un <strong>spectre continu</strong> (corps noir) dont le pic dépend de la
+        température (loi de Wien) : le Soleil (5 800 K) rayonne surtout dans le jaune-vert, une étoile O
+        (30 000 K) dans l'ultraviolet.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Freinage &amp; spirales magnétiques</h3>
+        <p>Un électron ralenti près d'un noyau émet un photon de freinage (<em>bremsstrahlung</em>, rayons X) ;
+        un électron relativiste tournant dans un champ magnétique émet du <strong>synchrotron</strong>
+        (ondes radio des supernovas et des trous noirs).</p>
+      </article>
+      <article class="card reveal">
+        <h3>Le fond diffus cosmologique</h3>
+        <p>Émis 380 000 ans après le Big Bang, lorsque l'Univers est devenu transparent : un rayonnement
+        de corps noir à <strong>2,725 K</strong>, aujourd'hui dans les micro-ondes, soit environ
+        411 photons par cm³.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FILTRAGE ================= -->
+<section id="filtrage" class="section alt">
+  <div class="wrap">
+    <p class="kicker">L'instrument</p>
+    <h2>Comment les photons sont filtrés</h2>
+    <p class="intro">Une nébuleuse émet quelques raies très fines noyées dans un ciel nocturne lumineux
+    (lampes au sodium et au mercure, luminescence de l'air, Lune…). Un <strong>filtre à bande étroite</strong>
+    — un empilement de couches diélectriques interférentielles — ne laisse passer qu'une fenêtre de quelques
+    nanomètres autour de la raie visée, avec plus de 90 % de transmission au centre et un rejet massif du reste.</p>
+
+    <div class="spectrum reveal">
+      <svg viewBox="0 0 1000 230" role="img" aria-label="Spectre du ciel pollué avec pics des lampes et raie Hα de la nébuleuse, et bande passante du filtre Hα">
+        <rect x="60" y="96" width="900" height="34" fill="url(#rainbow)" opacity="0.18" rx="4"/>
+        <g stroke="#8a93b8" stroke-width="1.4" opacity=".8">
+          <line x1="60" y1="128" x2="960" y2="128"/>
+        </g>
+        <!-- pics de pollution lumineuse -->
+        <g stroke="#ffd166" stroke-width="2">
+          <line x1="104" y1="128" x2="104" y2="70"/><text x="104" y="62" text-anchor="middle" class="lbl" fill="#ffd166">Hg 405</text>
+          <line x1="167" y1="128" x2="167" y2="60"/><text x="167" y="52" text-anchor="middle" class="lbl" fill="#ffd166">Hg 436</text>
+          <line x1="318" y1="128" x2="318" y2="72"/><text x="318" y="64" text-anchor="middle" class="lbl" fill="#7dff9a">OI 558 / Hg 546</text>
+          <line x1="737" y1="128" x2="737" y2="55"/><text x="737" y="47" text-anchor="middle" class="lbl" fill="#ffb347">Na 589 (doublet)</text>
+        </g>
+        <!-- raie de la nebuleuse -->
+        <line x1="828.9" y1="128" x2="828.9" y2="34" stroke="#a9ffc6" stroke-width="7" opacity=".35"/>
+        <line x1="828.9" y1="128" x2="828.9" y2="34" stroke="#a9ffc6" stroke-width="2.4"/>
+        <text x="828.9" y="24" text-anchor="middle" class="lbl" fill="#a9ffc6">Hα de la nébuleuse 656,3 nm</text>
+        <!-- bande passante du filtre -->
+        <rect x="820.9" y="30" width="18" height="98" rx="3" fill="#6dff9e" opacity=".3"/>
+        <text x="700" y="120" class="lbl" fill="#6dff9e" text-anchor="end">filtre Hα 6 nm : seule la raie de la nébuleuse passe</text>
+        <g font-size="12" fill="#9aa3c7">
+          <text x="60" y="152">400 nm</text><text x="285" y="152">500</text><text x="510" y="152">600</text><text x="935" y="152">700 nm</text>
+        </g>
+        <text x="60" y="185" class="lbl" fill="#9aa3c7">Spectre typique d'un ciel pollué : pics des lampes (jaune/orange) + raies de l'air (vert) + raie de la nébuleuse (rouge).</text>
+      </svg>
+    </div>
+
+    <div class="cards3">
+      <article class="card reveal">
+        <h3>Pourquoi filtrer ?</h3>
+        <p>Parce qu'une nébuleuse est <strong>des milliers de fois plus faible</strong> que le fond de ciel.
+        En ne gardant que 6 nm autour de Hα, on élimine la pollution lumineuse et la Lune : le rapport
+        signal/bruit s'envole, et l'on peut même imager en pleine ville ou sous la pleine Lune.</p>
+      </article>
+      <article class="card reveal">
+        <h3>La chaîne d'acquisition</h3>
+        <p>Capteur <strong>monochrome</strong> + roue à filtres motorisée → poses longues (5 à 20 min) répétées
+        des dizaines de fois par filtre → alignement et <strong>empilement</strong> (le bruit diminue en √N)
+        → combinaison des trois images en RVB.</p>
+      </article>
+      <article class="card reveal">
+        <h3>Un filtre = un processus physique</h3>
+        <p>Chaque canal isole un mécanisme : Hα = gaz ionisé par les étoiles, [O III] = gaz chauffé par un
+        rayonnement UV dur, [S II] = gaz choqué. Filtrer, c'est donc <strong>faire de la chimie à distance</strong>,
+        à des milliers d'années-lumière.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOYAGE ================= -->
+<section id="voyage" class="section">
+  <div class="wrap">
+    <p class="kicker">La propagation</p>
+    <h2>Comment les photons traversent l'espace</h2>
+    <p class="intro">Une fois émis, le photon file dans le vide à <strong>c = 299 792 458 m/s</strong> —
+    la vitesse limite de l'Univers. Une année-lumière (a.l.) vaut 9,461 × 10¹² km, soit environ 63 241 unités
+    astronomiques. La lumière du Soleil met ainsi 8 min 20 s à nous parvenir ; celle de Neptune, 4 heures.</p>
+
+    <div class="stats reveal">
+      <div class="stat"><strong>299 792 km/s</strong><span>vitesse de la lumière dans le vide</span></div>
+      <div class="stat"><strong>8 min 20 s</strong><span>Soleil → Terre</span></div>
+      <div class="stat"><strong>2,5 millions d'années</strong><span>pour un photon parti de la galaxie d'Andromède</span></div>
+      <div class="stat"><strong>~1 atome/cm³</strong><span>densité du milieu interstellaire</span></div>
+    </div>
+
+    <h3 class="sub">Le trajet d'un photon de nébuleuse</h3>
+    <ol class="timeline">
+      <li class="reveal"><strong>1 · Naissance dans le nuage.</strong> Un atome d'hydrogène excité émet un photon Hα dans une direction aléatoire.</li>
+      <li class="reveal"><strong>2 · Traversée du bras de la galaxie.</strong> Pendant des milliers d'années-lumière, presque rien ne l'arrête : le vide interstellaire est poussé (~1 atome/cm³). « Presque » : la <strong>poussière interstellaire</strong> (~1 % de la masse du gaz, grains de silicate et de carbone) absorbe et diffuse la lumière.</li>
+      <li class="reveal"><strong>3 · Extinction et rougissement.</strong> La diffusion est plus forte pour les courtes longueurs d'onde (diffusion de Rayleigh en λ⁻⁴) : le photon bleu est plus facilement perdu que le rouge. Le nuage paraît « rougi », et les régions très poussiéreuses deviennent des <strong>nébuleuses sombres</strong> (ex. la Tête de Cheval) qui découpent le fond lumineux.</li>
+      <li class="reveal"><strong>4 · L'espace intergalactique.</strong> Encore plus vide (~1 atome/m³), mais sur des milliards d'années-lumière l'hydrogène intergalactique laisse sa signature : les <strong>raies d'absorption de Lyman</strong> (forêt Lyman-α) dans le spectre des quasars lointains.</li>
+      <li class="reveal"><strong>5 · L'expansion de l'Univers.</strong> Pour les objets très lointains, l'espace lui-même s'étire pendant le voyage : la longueur d'onde reçue est allongée, λ<sub>reçue</sub> = λ<sub>émise</sub> × (1 + z). La raie Hα émise à 656 nm peut arriver dans l'infrarouge — c'est pourquoi le JWST observe en infrarouge.</li>
+      <li class="reveal"><strong>6 · Arrivée au télescope.</strong> Le miroir concentre les photons sur le capteur ; chacun arrache un électron par <strong>effet photoélectrique</strong> (si E &gt; travail de sortie du matériau). Des milliers de photons empilés dessinent, enfin, l'image.</li>
+    </ol>
+
+    <div class="formula reveal">
+      <span class="eq">z = (λ<sub>reçue</sub> − λ<sub>émise</sub>) / λ<sub>émise</sub></span>
+      <span class="legend">Redshift cosmologique : à z = 1, toutes les longueurs d'onde sont doublées — le visible devient l'infrarouge.</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><strong>✦ SHO·astro</strong> — site pédagogique sur l'astrophotographie en bande étroite.</p>
+    <p class="small">Images de la galerie générées procéduralement en palette SHO (script dans <code>tools/generate_images.py</code>).
+    Site statique autonome : HTML + CSS + JS, aucune dépendance externe. Contenu à but éducatif.</p>
+    <p class="small"><a href="#top">↑ Retour en haut</a></p>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox" hidden>
+  <button class="lb-close" aria-label="Fermer">✕</button>
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption><h3 id="lb-title"></h3><p id="lb-comment"></p></figcaption>
+  </figure>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
